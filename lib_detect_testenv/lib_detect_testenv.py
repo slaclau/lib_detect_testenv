@@ -37,7 +37,7 @@ def is_testenv_active() -> bool:
     Examples
     ----------
 
-    >>> if not is_setup_test_running(): assert is_doctest_active() == True
+    >>> if not is_setup_test_running(): assert is_testenv_active() == True
     """
     # is_testenv_active}}}
     if is_doctest_active():
@@ -72,7 +72,7 @@ def is_doctest_active() -> bool:
 
 
 # is_pytest_active{{{
-def is_pytest_active():
+def is_pytest_active() -> bool:
     """
     returns True if pytest is detected
 

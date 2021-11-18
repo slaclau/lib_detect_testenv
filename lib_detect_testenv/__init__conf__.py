@@ -1,4 +1,4 @@
-# ## CONFIG
+# CONF
 
 name = "lib_detect_testenv"
 title = "detects if pytest or doctest or pyrunner on pycharm is running"

@@ -107,7 +107,7 @@ Usage
         Examples
         ----------
 
-        >>> if not is_setup_test_running(): assert is_doctest_active() == True
+        >>> if not is_setup_test_running(): assert is_testenv_active() == True
         """
 
 - detect if doctest is active
@@ -134,7 +134,7 @@ Usage
 
 .. code-block:: python
 
-    def is_pytest_active():
+    def is_pytest_active() -> bool:
         """
         returns True if pytest is detected
 
