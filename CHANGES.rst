@@ -5,6 +5,6 @@ Changelog
 - new MINOR version for added functionality in a backwards compatible manner
 - new PATCH version for backwards compatible bug fixes
 
-v0.0.1
+v1.0.0
 --------
 2021-11-19: initial release
