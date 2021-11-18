@@ -26,8 +26,8 @@
     :start-after: # add_path_to_syspath{{{
     :end-before:  # add_path_to_syspath}}}
 
-- put this in Your `__init__.py` to automatically add the package directory to the syspath if the test environment is active. This is useful for local
-testing of packages.
+- put this in Your `__init__.py` to automatically add the package directory to the syspath if the test environment is active.
+  This is useful for local testing of packages.
 
 .. code-block:: python
 

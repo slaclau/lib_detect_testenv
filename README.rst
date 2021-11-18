@@ -185,8 +185,8 @@ Usage
         >>> assert path1 == path2
         """
 
-- put this in Your `__init__.py` to automatically add the package directory to the syspath if the test environment is active. This is useful for local
-testing of packages.
+- put this in Your `__init__.py` to automatically add the package directory to the syspath if the test environment is active.
+  This is useful for local testing of packages.
 
 .. code-block:: python
 
@@ -320,10 +320,10 @@ Changelog
 - new PATCH version for backwards compatible bug fixes
 
 v1.0.1b
---------
+-------
 work in progress
 
 v1.0.0
---------
+------
 2021-11-19: initial release
 
