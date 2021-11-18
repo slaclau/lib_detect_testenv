@@ -1,11 +1,10 @@
-# add_to_init{{{
-# __init__.py :
 # detect test environment and add path for local testing
+# this should be the first import in __init__.py
 from .lib_detect_testenv import *
 
-if is_doctest_running():
+if is_testenv_active():
     add_path_to_syspath(__file__)
-# add_to_init}}}
+
 
 # put Your imports here
 

@@ -18,8 +18,8 @@ again to avoid frozen or partially initialized modules.
 PathLikeOrString = Union[str, "os.PathLike[Any]"]
 
 
-# is_doctest_running{{{
-def is_doctest_running() -> bool:
+# is_testenv_active{{{
+def is_testenv_active() -> bool:
     """
     returns True if test environment is detected (pytest, doctest, docrunner)
 
@@ -37,16 +37,64 @@ def is_doctest_running() -> bool:
     Examples
     ----------
 
-    >>> if not is_setup_test_running(): assert is_doctest_running() == True
+    >>> if not is_setup_test_running(): assert is_doctest_active() == True
     """
-    # is_doctest_running}}}
+    # is_testenv_active}}}
+    if is_doctest_active():
+        return True
+    if is_pytest_active():
+        return True
+    return False
+
+
+# is_doctest_active{{{
+def is_doctest_active() -> bool:
+    """
+    returns True if pycharm docrunner is detected
+
+
+    Result
+    ----------
+    True if docrunner is detected
+
+
+    Exceptions
+    ----------
+    none
+
+    """
+    # is_doctest_active}}}
+
+    sys_argv_str = _get_sys_argv_str()
+    if "docrunner.py" in sys_argv_str:
+        return True
+    return False
+
+
+# is_pytest_active{{{
+def is_pytest_active():
+    """
+    returns True if pytest is detected
+
+
+    Result
+    ----------
+    True if pytest is detected
+
+
+    Exceptions
+    ----------
+    none
+
+    """
+    # is_pytest_active}}}
+
     # this is used in our tests when we test cli-commands
     if os.getenv("PYTEST_IS_RUNNING"):
         return True
-
-    for argv in sys.argv:
-        if is_doctest_in_arg_string(argv):
-            return True
+    sys_argv_str = _get_sys_argv_str()
+    if ("pytest.py" in sys_argv_str) or ("/pytest/__main__.py" in sys_argv_str):
+        return True
     return False
 
 
@@ -109,6 +157,15 @@ def add_path_to_syspath(path_to_append: PathLikeOrString) -> None:
     sys_paths_resolved = [pathlib.Path(path).resolve() for path in sys.path]
     if path_to_append not in sys_paths_resolved:
         sys.path.append(str(path_to_append))
+
+
+def _get_sys_argv_str() -> str:
+    """
+    gets the sys.argv as string. backslashes in Windows are replaced with slashes
+    """
+    sys_argv_str = str(sys.argv)
+    sys_argv_str = sys_argv_str.replace("\\", "/")
+    return sys_argv_str
 
 
 if __name__ == "__main__":

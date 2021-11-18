@@ -89,7 +89,7 @@ Usage
 
 .. code-block:: python
 
-    def is_doctest_running() -> bool:
+    def is_testenv_active() -> bool:
         """
         returns True if test environment is detected (pytest, doctest, docrunner)
 
@@ -107,7 +107,47 @@ Usage
         Examples
         ----------
 
-        >>> if not is_setup_test_running(): assert is_doctest_running() == True
+        >>> if not is_setup_test_running(): assert is_doctest_active() == True
+        """
+
+- detect if doctest is active
+
+.. code-block:: python
+
+    def is_doctest_active() -> bool:
+        """
+        returns True if pycharm docrunner is detected
+
+
+        Result
+        ----------
+        True if docrunner is detected
+
+
+        Exceptions
+        ----------
+        none
+
+        """
+
+- detect if pytest is active
+
+.. code-block:: python
+
+    def is_pytest_active():
+        """
+        returns True if pytest is detected
+
+
+        Result
+        ----------
+        True if pytest is detected
+
+
+        Exceptions
+        ----------
+        none
+
         """
 
 - add a path to the syspath
@@ -148,13 +188,12 @@ Usage
 - put this in Your `__init__.py` to automatically add the package directory to the syspath if the test environment is active. This is useful for local
 testing of packages.
 
-
 .. code-block:: python
 
     # __init__.py :
     # this should be Your first import in __init__
     from lib_detect_testenv import *
-    if is_doctest_running():
+    if is_testenv_active():
         add_path_to_syspath(__file__)
 
 Usage from Commandline
