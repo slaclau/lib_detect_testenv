@@ -2,15 +2,17 @@ lib_detect_testenv
 ==================
 
 
-Version v1.0.1b as of 2021-11-18 see `Changelog`_
+Version v1.0.1 as of 2021-11-21 see `Changelog`_
 
-|travis_build| |license| |jupyter| |pypi| |black|
+|build_badge| |license| |jupyter| |pypi| |black|
 
 |codecov| |better_code| |cc_maintain| |cc_issues| |cc_coverage| |snyk|
 
 
-.. |travis_build| image:: https://img.shields.io/travis/bitranox/lib_detect_testenv/master.svg
-   :target: https://travis-ci.com/bitranox/lib_detect_testenv
+
+.. |build_badge| image:: https://github.com/bitranox/lib_detect_testenv/actions/workflows/python-tests.yml/badge.svg
+   :target: https://github.com/bitranox/lib_detect_testenv/actions/workflows/python-tests.yml
+
 
 .. |license| image:: https://img.shields.io/github/license/webcomics/pywine.svg
    :target: http://en.wikipedia.org/wiki/MIT_License
@@ -55,9 +57,9 @@ automated tests, Travis Matrix, Documentation, Badges, etc. are managed with `Pi
 
 Python version required: 3.6.0 or newer
 
-tested on linux "bionic" with python 3.6, 3.7, 3.8, 3.9, 3.9-dev, pypy3 - architectures: amd64, ppc64le, s390x, arm64
+tested on recent linux with python 3.6, 3.7, 3.8, 3.9, 3.10.0, pypy-3.8 - architectures: amd64
 
-`100% code coverage <https://codecov.io/gh/bitranox/lib_detect_testenv>`_, flake8 style checking ,mypy static type checking ,tested under `Linux, macOS, Windows <https://travis-ci.org/bitranox/lib_detect_testenv>`_, automatic daily builds and monitoring
+`100% code coverage <https://codecov.io/gh/bitranox/lib_detect_testenv>`_, flake8 style checking ,mypy static type checking ,tested under `Linux, macOS, Windows <https://github.com/bitranox/lib_detect_testenv/actions/workflows/python-tests.yml>`_, automatic daily builds and monitoring
 
 ----
 
@@ -319,9 +321,9 @@ Changelog
 - new MINOR version for added functionality in a backwards compatible manner
 - new PATCH version for backwards compatible bug fixes
 
-v1.0.1b
--------
-work in progress
+v1.0.1
+------
+2021-11-21: implement github actions
 
 v1.0.0
 ------
