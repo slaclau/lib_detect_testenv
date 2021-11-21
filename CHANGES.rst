@@ -5,6 +5,12 @@ Changelog
 - new MINOR version for added functionality in a backwards compatible manner
 - new PATCH version for backwards compatible bug fixes
 
+
+v1.0.2b
+-------
+work in progress
+    - remove second github action yml
+
 v1.0.1
 ------
 2021-11-21: implement github actions
