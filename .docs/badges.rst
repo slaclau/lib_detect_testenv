@@ -1,10 +1,12 @@
-|travis_build| |license| |jupyter| |pypi| |black|
+|build_badge| |license| |jupyter| |pypi| |black|
 
 |codecov| |better_code| |cc_maintain| |cc_issues| |cc_coverage| |snyk|
 
 
-.. |travis_build| image:: https://img.shields.io/travis/bitranox/lib_detect_testenv/master.svg
-   :target: https://travis-ci.com/bitranox/lib_detect_testenv
+
+.. |build_badge| image:: https://github.com/bitranox/lib_detect_testenv/actions/workflows/python-tests.yml/badge.svg
+   :target: https://github.com/bitranox/lib_detect_testenv/actions/workflows/python-tests.yml
+
 
 .. |license| image:: https://img.shields.io/github/license/webcomics/pywine.svg
    :target: http://en.wikipedia.org/wiki/MIT_License
