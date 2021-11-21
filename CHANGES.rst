@@ -8,6 +8,7 @@ Changelog
 v1.0.2b
 -------
 work in progress
+    - remove second github action yml
 
 v1.0.1
 ------
