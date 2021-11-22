@@ -12,7 +12,7 @@
    :target: http://en.wikipedia.org/wiki/MIT_License
 
 .. |jupyter| image:: https://mybinder.org/badge_logo.svg
- :target: https://mybinder.org/v2/gh/bitranox/lib_detect_testenv/master?filepath=lib_detect_testenv.ipynb
+   :target: https://mybinder.org/v2/gh/bitranox/lib_detect_testenv/master?filepath=lib_detect_testenv.ipynb
 
 .. for the pypi status link note the dashes, not the underscore !
 .. |pypi| image:: https://img.shields.io/pypi/status/lib-detect-testenv?label=PyPI%20Package

@@ -10,7 +10,7 @@ v1.0.2b
 -------
 work in progress
     - remove second github action yml
-
+    - fix "setup.py test"
 
 v1.0.1
 ------
