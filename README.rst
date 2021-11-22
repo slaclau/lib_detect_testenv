@@ -2,7 +2,7 @@ lib_detect_testenv
 ==================
 
 
-Version v1.0.2b as of 2021-11-22 see `Changelog`_
+Version v1.0.2 as of 2021-11-22 see `Changelog`_
 
 |build_badge| |license| |jupyter| |pypi| |black|
 
@@ -91,7 +91,7 @@ Usage
 
 .. code-block:: python
 
-    def is_testenv_active() -> bool:
+    def is_testenv_active(arg_string: Optional[str] = None) -> bool:
         """
         returns True if test environment is detected (pytest, doctest, docrunner)
 
@@ -109,14 +109,14 @@ Usage
         Examples
         ----------
 
-        >>> if not is_setup_test_running(): assert is_testenv_active() == True
+        >>> assert is_testenv_active() == True
         """
 
 - detect if doctest is active
 
 .. code-block:: python
 
-    def is_doctest_active() -> bool:
+    def is_doctest_active(arg_string: Optional[str] = None) -> bool:
         """
         returns True if pycharm docrunner is detected
 
@@ -136,7 +136,7 @@ Usage
 
 .. code-block:: python
 
-    def is_pytest_active() -> bool:
+    def is_pytest_active(arg_string: Optional[str] = None) -> bool:
         """
         returns True if pytest is detected
 
@@ -322,9 +322,9 @@ Changelog
 - new PATCH version for backwards compatible bug fixes
 
 
-v1.0.2b
+v1.0.2
 -------
-work in progress
+2021-11-22:
     - remove second github action yml
     - fix "setup.py test"
 

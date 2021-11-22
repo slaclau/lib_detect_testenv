@@ -6,9 +6,9 @@ Changelog
 - new PATCH version for backwards compatible bug fixes
 
 
-v1.0.2b
+v1.0.2
 -------
-work in progress
+2021-11-22:
     - remove second github action yml
     - fix "setup.py test"
 
