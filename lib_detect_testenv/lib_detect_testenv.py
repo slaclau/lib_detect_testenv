@@ -66,7 +66,7 @@ def is_doctest_active() -> bool:
     # is_doctest_active}}}
 
     sys_argv_str = _get_sys_argv_str()
-    if "docrunner.py" in sys_argv_str:
+    if "/docrunner.py" in sys_argv_str or "/doctest.py" in sys_argv_str:
         return True
     return False
 
