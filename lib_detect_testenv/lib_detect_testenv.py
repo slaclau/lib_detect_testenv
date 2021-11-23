@@ -21,7 +21,12 @@ PathLikeOrString = Union[str, "os.PathLike[Any]"]
 # is_testenv_active{{{
 def is_testenv_active(arg_string: Optional[str] = None) -> bool:
     """
-    returns True if test environment is detected (pytest, doctest, docrunner)
+    returns True if test environment is detected ("pytest", "doctest", "setup.py test")
+
+
+    Parameter
+    ----------
+    arg_string  : optional, if None : str(sys.argv())
 
 
     Result
@@ -40,14 +45,19 @@ def is_testenv_active(arg_string: Optional[str] = None) -> bool:
     >>> assert is_testenv_active() == True
     """
     # is_testenv_active}}}
-    arg_string = _get_sys_argv_str()
-    return is_doctest_active(arg_string=arg_string) or is_pytest_active(arg_string=arg_string) or is_setup_test_running(arg_string=arg_string)
+    arg_string = _get_sys_argv_str(arg_string)
+    return is_doctest_active(arg_string=arg_string) or is_pytest_active(arg_string=arg_string) or is_setup_test_active(arg_string=arg_string)
 
 
 # is_doctest_active{{{
 def is_doctest_active(arg_string: Optional[str] = None) -> bool:
     """
-    returns True if pycharm docrunner is detected
+    returns True if pycharm "docrunner.py" or "doctest.py" is detected
+
+
+    Parameter
+    ----------
+    arg_string  : optional, if None : str(sys.argv())
 
 
     Result
@@ -62,8 +72,8 @@ def is_doctest_active(arg_string: Optional[str] = None) -> bool:
     """
     # is_doctest_active}}}
 
-    arg_string = _get_sys_argv_str()
-    if "/docrunner.py" in arg_string or "/doctest.py" in arg_string:
+    arg_string = _get_sys_argv_str(arg_string)
+    if "docrunner.py" in arg_string or "doctest.py" in arg_string:
         return True
     return False
 
@@ -71,7 +81,12 @@ def is_doctest_active(arg_string: Optional[str] = None) -> bool:
 # is_pytest_active{{{
 def is_pytest_active(arg_string: Optional[str] = None) -> bool:
     """
-    returns True if pytest is detected
+    returns True if "pytest" is detected
+
+
+    Parameter
+    ----------
+    arg_string  : optional, if None : str(sys.argv())
 
 
     Result
@@ -86,7 +101,7 @@ def is_pytest_active(arg_string: Optional[str] = None) -> bool:
     """
     # is_pytest_active}}}
 
-    arg_string = _get_sys_argv_str()
+    arg_string = _get_sys_argv_str(arg_string)
     # this is used in our tests when we test cli-commands
     if os.getenv("PYTEST_IS_RUNNING"):
         return True
@@ -95,13 +110,62 @@ def is_pytest_active(arg_string: Optional[str] = None) -> bool:
     return False
 
 
-def is_setup_test_running(arg_string: Optional[str] = None) -> bool:
-    """if 'setup.py test' was launched"""
-    arg_string = _get_sys_argv_str()
+# is_setup_active{{{
+def is_setup_active(arg_string: Optional[str] = None) -> bool:
+    """
+    returns True if "setup.py" is detected
+
+
+    Parameter
+    ----------
+    arg_string  : optional, if None : str(sys.argv())
+
+
+    Result
+    ----------
+    True if setup.py is detected
+
+
+    Exceptions
+    ----------
+    none
+
+    """
+    # is_setup_active}}}
+    arg_string = _get_sys_argv_str(arg_string)
     return "setup.py" in arg_string
 
 
-'''
+# is_setup_test_active{{{
+def is_setup_test_active(arg_string: Optional[str] = None) -> bool:
+    """
+    returns True if "setup.py test" is detected
+
+
+    Parameter
+    ----------
+    arg_string  : optional, if None : str(sys.argv())
+
+
+    Result
+    ----------
+    True if "setup.py test" is detected
+
+
+    Exceptions
+    ----------
+    none
+
+    """
+    # is_setup_test_active}}}
+    arg_string = _get_sys_argv_str(arg_string)
+    if "setup.py" in arg_string:
+        arg_string_remaining = arg_string.split("setup.py")[1].strip()
+        if arg_string_remaining.startswith("test"):
+            return True
+    return False
+
+
 def is_doctest_in_arg_string(arg_string: str) -> bool:
     """
     >>> assert is_doctest_in_arg_string('test') == False
@@ -112,7 +176,6 @@ def is_doctest_in_arg_string(arg_string: str) -> bool:
         return True
     else:
         return False
-'''
 
 
 # add_path_to_syspath{{{
