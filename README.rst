@@ -2,7 +2,7 @@ lib_detect_testenv
 ==================
 
 
-Version v1.0.2 as of 2021-11-22 see `Changelog`_
+Version v2.0.0 as of 2021-11-23 see `Changelog`_
 
 |build_badge| |license| |jupyter| |pypi| |black|
 
@@ -93,7 +93,12 @@ Usage
 
     def is_testenv_active(arg_string: Optional[str] = None) -> bool:
         """
-        returns True if test environment is detected (pytest, doctest, docrunner)
+        returns True if test environment is detected ("pytest", "doctest", "setup.py test")
+
+
+        Parameter
+        ----------
+        arg_string  : optional, if None : str(sys.argv())
 
 
         Result
@@ -118,7 +123,12 @@ Usage
 
     def is_doctest_active(arg_string: Optional[str] = None) -> bool:
         """
-        returns True if pycharm docrunner is detected
+        returns True if pycharm "docrunner.py" or "doctest.py" is detected
+
+
+        Parameter
+        ----------
+        arg_string  : optional, if None : str(sys.argv())
 
 
         Result
@@ -138,12 +148,67 @@ Usage
 
     def is_pytest_active(arg_string: Optional[str] = None) -> bool:
         """
-        returns True if pytest is detected
+        returns True if "pytest" is detected
+
+
+        Parameter
+        ----------
+        arg_string  : optional, if None : str(sys.argv())
 
 
         Result
         ----------
         True if pytest is detected
+
+
+        Exceptions
+        ----------
+        none
+
+        """
+
+- detect if setup.py is active
+
+.. code-block:: python
+
+    def is_setup_active(arg_string: Optional[str] = None) -> bool:
+        """
+        returns True if "setup.py" is detected
+
+
+        Parameter
+        ----------
+        arg_string  : optional, if None : str(sys.argv())
+
+
+        Result
+        ----------
+        True if setup.py is detected
+
+
+        Exceptions
+        ----------
+        none
+
+        """
+
+- detect if "setup.py test" is active
+
+.. code-block:: python
+
+    def is_setup_test_active(arg_string: Optional[str] = None) -> bool:
+        """
+        returns True if "setup.py test" is detected
+
+
+        Parameter
+        ----------
+        arg_string  : optional, if None : str(sys.argv())
+
+
+        Result
+        ----------
+        True if "setup.py test" is detected
 
 
         Exceptions
@@ -321,6 +386,11 @@ Changelog
 - new MINOR version for added functionality in a backwards compatible manner
 - new PATCH version for backwards compatible bug fixes
 
+
+v2.0.0
+-------
+2021-11-23:
+    - add "setup.py test" detection
 
 v1.0.2
 -------

@@ -19,6 +19,20 @@
     :start-after: # is_pytest_active{{{
     :end-before:  # is_pytest_active}}}
 
+- detect if setup.py is active
+
+.. include:: ../lib_detect_testenv/lib_detect_testenv.py
+    :code: python
+    :start-after: # is_setup_active{{{
+    :end-before:  # is_setup_active}}}
+
+- detect if "setup.py test" is active
+
+.. include:: ../lib_detect_testenv/lib_detect_testenv.py
+    :code: python
+    :start-after: # is_setup_test_active{{{
+    :end-before:  # is_setup_test_active}}}
+
 - add a path to the syspath
 
 .. include:: ../lib_detect_testenv/lib_detect_testenv.py

@@ -6,6 +6,11 @@ Changelog
 - new PATCH version for backwards compatible bug fixes
 
 
+v2.0.0
+-------
+2021-11-23:
+    - add "setup.py test" detection
+
 v1.0.2
 -------
 2021-11-22:
