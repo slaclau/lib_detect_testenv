@@ -2,7 +2,7 @@
 
 name = "lib_detect_testenv"
 title = "detects if pytest or doctest or pyrunner on pycharm is running"
-version = "v2.0.1"
+version = "v2.0.2"
 url = "https://github.com/bitranox/lib_detect_testenv"
 author = "Robert Nowotny"
 author_email = "bitranox@gmail.com"
@@ -17,7 +17,7 @@ Info for lib_detect_testenv:
 
     detects if pytest or doctest or pyrunner on pycharm is running
 
-    Version : v2.0.1
+    Version : v2.0.2
     Url     : https://github.com/bitranox/lib_detect_testenv
     Author  : Robert Nowotny
     Email   : bitranox@gmail.com"""
