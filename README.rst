@@ -2,11 +2,11 @@ lib_detect_testenv
 ==================
 
 
-Version v2.0.2.2 as of 2022-06-02 see `Changelog`_
+Version v2.0.3 as of 2023-01-13 see `Changelog`_
 
 |build_badge| |license| |jupyter| |pypi| |pypi-downloads| |black|
 
-|codecov| |better_code| |cc_maintain| |cc_issues| |cc_coverage| |snyk|
+|codecov| |cc_maintain| |cc_issues| |cc_coverage| |snyk|
 
 
 
@@ -26,9 +26,6 @@ Version v2.0.2.2 as of 2022-06-02 see `Changelog`_
 
 .. |codecov| image:: https://img.shields.io/codecov/c/github/bitranox/lib_detect_testenv
    :target: https://codecov.io/gh/bitranox/lib_detect_testenv
-
-.. |better_code| image:: https://bettercodehub.com/edge/badge/bitranox/lib_detect_testenv?branch=master
-   :target: https://bettercodehub.com/results/bitranox/lib_detect_testenv
 
 .. |cc_maintain| image:: https://img.shields.io/codeclimate/maintainability-percentage/bitranox/lib_detect_testenv?label=CC%20maintainability
    :target: https://codeclimate.com/github/bitranox/lib_detect_testenv/maintainability
@@ -61,7 +58,7 @@ automated tests, Travis Matrix, Documentation, Badges, etc. are managed with `Pi
 
 Python version required: 3.6.0 or newer
 
-tested on recent linux with python 3.6, 3.7, 3.8, 3.9, 3.10, pypy-3.8 - architectures: amd64
+tested on recent linux with python 3.7, 3.8, 3.9, 3.10, 3.11, pypy-3.8 - architectures: amd64
 
 `100% code coverage <https://codecov.io/gh/bitranox/lib_detect_testenv>`_, flake8 style checking ,mypy static type checking ,tested under `Linux, macOS, Windows <https://github.com/bitranox/lib_detect_testenv/actions/workflows/python-package.yml>`_, automatic daily builds and monitoring
 
@@ -389,6 +386,15 @@ Changelog
 - new MAJOR version for incompatible API changes,
 - new MINOR version for added functionality in a backwards compatible manner
 - new PATCH version for backwards compatible bug fixes
+
+v2.0.3
+---------
+2023-01-13:
+    - update github actions : checkout@v3 and setup-python@v4
+    - remove "better code" badges
+    - remove python 3.6 tests
+    - add python 3.11 tests
+    - update to pypy 3.9 tests
 
 v2.0.2.2
 ---------
