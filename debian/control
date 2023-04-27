@@ -1,0 +1,17 @@
+Source: python-lib-detect-testenv
+Section: python
+Priority: optional
+Maintainer: Sebastien Laclau <seb.laclau@gmail.com>
+Build-Depends: 
+ dh-python,
+ debhelper-compat (= 13),
+ python3-all,
+ python3-setuptools
+
+Package: python3-lib-detect-testenv
+Architecture: any
+Multi-Arch: allowed
+Depends: ${python3:Depends}, ${shlibs:Depends}, ${misc:Depends}
+Recommends: ${python3:Recommends},
+Suggests: ${python3:Suggests},
+Description: Python 3 module
