@@ -109,7 +109,7 @@ setup_kwargs["tests_require"] = tests_require
 setup_kwargs["install_requires"] = install_requires
 # minimally needs to run the setup script, dependencies needs also to put here for "setup.py install test"
 # dependencies must not be put here for pip install
-setup_kwargs["setup_requires"] = setup_requires
+# setup_kwargs["setup_requires"] = setup_requires
 setup_kwargs["python_requires"] = ">=3.6.0"
 setup_kwargs["zip_safe"] = False
 
