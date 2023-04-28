@@ -22,6 +22,7 @@ jobs:
           echo "${{ secrets.PPA_GPG_PRIVATE_KEY }}" | gpg --batch --import
       - name: Build
         run: |
+          python3 updateChangelog.py 
           dpkg-buildpackage -S -sa
           dpkg-buildpackage -b
           mv ../python-lib-detect-testenv_*.* .
