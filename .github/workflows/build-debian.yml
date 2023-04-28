@@ -5,20 +5,22 @@ on:
   
 jobs:
   build:
-    runs-on: ${{ matrix.os }}
+    runs-on: ubuntu-latest
     
     strategy:
       matrix:
-        os: [ubuntu-22.04, ubuntu-20.04]
+        codename: [focal, jammy, kinetic, lunar]
     steps:
       - name: Checkout
         uses: actions/checkout@v3
       - name: Get build dependencies
         run: |
-          sudo apt-add-repository ppa:slaclau/ppa-pre
-          sudo apt update
-          sudo apt install devscripts equivs
+          sudo apt install pbuilder devscripts equivs
           sudo mk-build-deps -i -t "apt-get -o Debug::pkgProblemResolver=yes --no-install-recommends -y"
+      - name: Make source
+        run: |
+          python3 updateChangelog.py ${{ matrix.codename }}
+          dpkg-buildpackage -S -sa
       - name: Import key
         run: |
           GPG_KEY_ID=$(echo "${{ secrets.PPA_GPG_PRIVATE_KEY }}" | gpg --import-options show-only --import | sed -n '2s/^\s*//p')
@@ -26,21 +28,17 @@ jobs:
           echo "${{ secrets.PPA_GPG_PRIVATE_KEY }}" | gpg --batch --import
       - name: Build
         run: |
-          python3 updateChangelog.py 
-          dpkg-buildpackage -S -sa
-          dpkg-buildpackage -b
-          mv ../python-lib-detect-testenv_*.* .
+          sudo pbuilder create \
+            --distribution ${{ matrix.codename }}
+          sudo pbuilder build \
+            --distribution ${{ matrix.codename }} \
+            --buildresult .. \
+            ../*dsc
+          debsign ../*.changes
+          mv ../python*.* .
       - name: Upload debian package
         uses: actions/upload-artifact@v3
         with:
-          name: ${{ matrix.os }}
+          name: ${{ matrix.codename }}
           path: |
-            python-lib-detect-testenv*.deb
-            python-lib-detect-testenv*.dsc
-            python-lib-detect-testenv*.tar.xz
-            python-lib-detect-testenv*.changes
-      - name: Publish package to prerelease PPA
-        run: |
-          sudo apt install dput
-          dput ppa:slaclau/ppa-pre python-lib-detect-testenv*source.changes
-        if: github.ref == 'refs/heads/master'
+            python*
