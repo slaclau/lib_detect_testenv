@@ -21,11 +21,14 @@ jobs:
         run: |
           python3 updateChangelog.py ${{ matrix.codename }}
           dpkg-buildpackage -S -sa
+          mkdir source
+          mv ../python*.* source/
       - name: Import key
         run: |
           GPG_KEY_ID=$(echo "${{ secrets.PPA_GPG_PRIVATE_KEY }}" | gpg --import-options show-only --import | sed -n '2s/^\s*//p')
           echo $GPG_KEY_ID
           echo "${{ secrets.PPA_GPG_PRIVATE_KEY }}" | gpg --batch --import
+          debsign source/*.changes
       - name: Build
         run: |
           sudo pbuilder create \
@@ -33,12 +36,18 @@ jobs:
           sudo pbuilder build \
             --distribution ${{ matrix.codename }} \
             --buildresult .. \
-            ../*dsc
-          debsign ../*.changes
-          mv ../python*.* .
+            source/*dsc
+          mkdir binary
+          mv ../python*.* binary/
       - name: Upload debian package
         uses: actions/upload-artifact@v3
         with:
           name: ${{ matrix.codename }}
           path: |
-            python*
+            source
+            binary
+      - name: Publish package to prerelease PPA
+        run: |
+          sudo apt install dput
+          dput ppa:slaclau/ppa-pre source/*source.changes
+        if: github.ref == 'refs/heads/master'
